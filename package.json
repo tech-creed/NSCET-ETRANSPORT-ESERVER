@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Binary-Beast-01/NSCET-TRANSPORT-ESERVER/issues"
   },
-  "homepage": "https://github.com/Binary-Beast-01/NSCET-TRANSPORT-ESERVER#readme"
+  "homepage": "https://github.com/Binary-Beast-01/NSCET-TRANSPORT-ESERVER#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "firebase": "^9.15.0",
+    "firebase-admin": "^11.3.0"
+  }
 }
