@@ -1,10 +1,12 @@
 // importing requirements
 const express = require("express")
 const cookieParser = require("cookie-parser")
-const admin = require("firebase-admin");
+
+// init firebase services
+const firebaseinit = require('./firebaseConfig.js')
 
 //Routers
-
+const postGpsData = require('./routers/postGpsDataRoute.js')
 
 
 //--------------------------------------------------------//
@@ -24,30 +26,13 @@ app.use(express.urlencoded({
   extended: true
 }))
 
-// firebase
-// initializeApp
-const serviceAccount = require("./serviceAccountKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
-
-// firebase firestore database service init
-const db = admin.firestore()
-// collection Reference
-const colRef = db.collection('gps-coordinates')
-// get collection data
-colRef.get()
-  .then((snapshot)=>{
-    console.log(snapshot)
-  })
-
-
 const PORT = process.env.PORT || 8888
 
 app.listen(PORT, () => { console.log('API Server.................ok') });
 
+app.get('',postGpsData)
+
 // 404 Page
 app.use((req, res) => {
-  res.status(404).send('404 No Route Found')
+  res.status(404).send('404 No Route Found',)
 });
