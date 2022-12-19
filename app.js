@@ -26,11 +26,13 @@ app.use(express.urlencoded({
   extended: true
 }))
 
+// PORT
 const PORT = process.env.PORT || 8888
+
 
 app.listen(PORT, () => { console.log('API Server.................ok') });
 
-app.get('',postGpsData)
+app.post('',postGpsData)
 
 // 404 Page
 app.use((req, res) => {
