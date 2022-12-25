@@ -32,7 +32,7 @@ const PORT = process.env.PORT || 8888
 
 app.listen(PORT, () => { console.log('API Server.................ok') });
 
-app.post('',postGpsData)
+app.get('',postGpsData)
 
 // 404 Page
 app.use((req, res) => {
