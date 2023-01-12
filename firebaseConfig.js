@@ -6,5 +6,5 @@ const serviceAccount = require("./serviceAccountKey.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://nscet-etransport-default-rtdb.asia-southeast1.firebasedatabase.app"
+  databaseURL: "https://nscet-iot-transport-default-rtdb.firebaseio.com/"
 })

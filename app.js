@@ -32,6 +32,8 @@ const PORT = process.env.PORT || 8888
 
 app.listen(PORT, () => { console.log('API Server.................ok') });
 
+app.use('/',postGpsData)
+app.use('/store/history',postGpsData)
 app.use('/data',postGpsData)
 
 // 404 Page
