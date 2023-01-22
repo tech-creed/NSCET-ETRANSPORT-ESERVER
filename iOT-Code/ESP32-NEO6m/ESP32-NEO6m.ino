@@ -67,6 +67,25 @@ void UpdateInfo()
   else
   {
     Serial.println(F("INVALID GPS | Searching for Satellite......"));
+    Serial.println(F("Communicating with Firebase Testing....."));
+
+    String latitude = "0";
+    String longitude = "0";
+    String speed = "0";
+    String satellite = "0";
+    String altitude = "0";
+
+    Firebase.setString(firebaseData, "/live/TN-625532/altitude", altitude);
+    delay(250);
+    Firebase.setString(firebaseData, "/live/TN-625532/latitude", latitude);
+    delay(250);
+    Firebase.setString(firebaseData, "/live/TN-625532/longitude", longitude);
+    delay(250);
+    Firebase.setString(firebaseData, "/live/TN-625532/satellite", satellite);
+    delay(250);
+    Firebase.setString(firebaseData, "/live/TN-625532/speed", speed);
+
+    Serial.println(F("Null Data Transmitted........."));    
   }
 }
 
