@@ -1,3 +1,6 @@
+//config env file
+require('dotenv').config()
+
 // importing requirements
 const express = require("express")
 const cookieParser = require("cookie-parser")

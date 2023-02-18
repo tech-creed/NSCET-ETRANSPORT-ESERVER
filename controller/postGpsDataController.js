@@ -38,6 +38,28 @@ const storeHistory = async (req, res) => {
     }
 }
 
+const route_finding = (req,res)=>{
+  // importing ghrouting for config the routing api
+  const GraphHopperRouting = require('graphhopper-js-api-client/src/GraphHopperRouting');
+  const GHInput = require('graphhopper-js-api-client/src/GHInput');
+
+  const API_KEY = process.env.GRAPHHOPPER_API_KEY
+  const ghRouting = new GraphHopperRouting({key: API_KEY}, {profile:"car", elevation: false})
+
+  // final bus stop lat & long
+  const busLatLong = [req.params['long'],req.params['lat']]
+
+  // college lot & lang
+  const collegeLotLang = [77.506366,10.030093]
+
+  ghRouting.doRequest({points:[collegeLotLang,busLatLong]})
+    .then(function(json){
+      res.send(json.paths[0].points.coordinates)
+    })
+    .catch(function(err){
+       console.error(err.message)
+    })
+}
 
 // get collection data
 const postGpsCoordinates = async (req, res) => {
@@ -48,5 +70,6 @@ const postGpsCoordinates = async (req, res) => {
 module.exports = {
   postGpsCoordinates,
   getdata,
-  storeHistory
+  storeHistory,
+  route_finding
 }
